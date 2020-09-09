@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <title>Shopping List</title>
+</head>
+<body>
+
+    <div class="body">
+        <div class="list">
+            <div class="list-header">
+                <h2>MY SHOPPING LIST</h2>
+            </div>
+
+            <div class="list-container">
+               <table id="main-list">
+                   <thead>
+                       <tr>
+                           <td>Product</td>
+                           <td>Amount</td>
+                           <td>Action</td>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       <!-- JAVASCRIPT INSERTS STUFFS HERE -->
+                   </tbody>
+               </table>
+            </div>
+            
+        </div>
+
+        <div class="list-form">
+            <div class="list-form-input">
+                <h2>CREATE YOUR SHOPPING LIST</h2>
+
+                <form >
+                    <div class="form-input">
+                        <div class="name">
+                            <label for="name">List name</label> <br>
+                            <input type="text" 
+                            placeholder="List name" 
+                            required 
+                            id="list-name" 
+                            name="list name" autofocus>
+                            <small id="nameerror" class="error"></small>
+                        </div>
+    
+                        <div class="price">
+                            <label for="amount">Price (in naira)</label><br>
+                            <input 
+                            type="number" 
+                            min="0" value="0" 
+                            placeholder="Price in naira" 
+                            id="list-amount" 
+                            required 
+                            name="amount">
+                            <small id="amounterror" class="error"></small>
+                        </div>
+                    </div>
+
+                  <button id="btn">ADD TO LIST</button>
+                  <button id="btnEdit">EDIT LIST</button>
+                </form>
+
+              
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="scriptTwo.js">
+        
+    </script>
+
+    
+</body>
+</html>

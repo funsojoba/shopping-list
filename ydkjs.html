@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <title>Document</title>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+            flex-direction: column;
+            /* overflow: hidden; */
+            position: relative;
+        }
+        .slider-container{
+            width: 100%;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .slider-container .slider-img{
+            display: flex;
+            width: 100%;
+            /* transform: translateX(-1308px); */
+        }
+        .slider-container .slider-img img{
+            width: 100%;
+        }
+        .btn{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* background: #ddd; */
+            width: 100%;
+            padding: 20px;
+        }
+        .btn button{
+            background: none;
+            color: rgba(255, 255, 255, 0.411);
+            outline: none;
+            border: none;
+            cursor: pointer;
+            
+        }
+        .btn .text{
+            color: #fff;
+        }
+        .btn .text small{
+            letter-spacing: 2.5px;
+            margin-top: 10px;
+        }
+        .sidebar{
+            height: 100vh;
+            /* background: black; */
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .sidebar .toggle{
+            position: absolute;
+            right: 10px;
+            top: 0;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .sidebar .sidebar-content{
+            width: 400px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: #555;
+            height: 100%;
+            transform: translateX(400px);
+            transition: all ease-in 400ms;
+        }
+        @media only screen and (max-width: 850px){
+            .sidebar .sidebar-content{
+                width: 300px;
+            }
+        }
+        .sidebar .sidebar-content ul{
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            padding: 30px;
+            height: 100%;
+            
+        }
+        
+        .sidebar .sidebar-content ul li{
+            display: inline-block;
+            padding: 5px 10px;
+            background: #fff;
+        }
+        
+        .sidebar .sidebar-content ul li a{
+            color: rgb(202, 0, 67);
+            text-decoration: none;
+        }
+        .rotate{
+            transform: rotate(30deg);
+            transition: all ease-in 400ms;
+        }
+        .toggle{
+            background: rgb(210, 255, 210);
+            padding: 10px;
+            border-radius: 50%;
+            color: rgb(0, 90, 0);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-items: center;
+            align-self: center;
+        }
+        .scroll{
+            position: absolute;
+            padding: 30px;
+            background: rgb(231, 255, 165);
+            bottom: 50%;
+            transform: translateX(-400px);
+        }
+        .test-list{
+            flex: 1;
+            height: 100vh;
+            display: flex;
+        }
+        .test-list .list-display{
+            flex: 1;
+            background: rgb(141, 141, 141);
+        }
+        .test-list .list-input{
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            height: 100%;
+            padding: 30px;
+            background: #fff;
+            flex: 1;
+
+        }
+        .test-list .list-input form input{
+            padding: 10px 15px;
+            border: none;
+            outline: none;
+            border-bottom: solid 1px #ddd;
+        }
+        .test-list .list-input .form-input{
+            position: relative;
+        }
+        .test-list .list-input .form-input label{
+            
+            color: #ddd;
+        }
+        .test-list .list-input .form-input:focus label{
+            top: 0;
+        }
+        input[type="submit"]{
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .list-display{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .list-display table {
+            width: 100%;
+        }
+        
+        .list-display td, th{
+            padding: 10px 20px;
+            background: #fff;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+ 
+
+    <div class="slider-container">
+        <div class="slider-img">
+            <img src="slide/slider-5.jpg" alt="">
+            <img src="slide/slider-1.jpg" alt="">
+            <img src="slide/slider-2.jpg" alt="">
+            <img src="slide/slider-3.jpg" alt="">
+            <img src="slide/slider-4.jpg" alt="">
+            <img src="slide/slider-5.jpg" alt="">
+            <img src="slide/slider-1.jpg" alt="">
+        </div>
+        <div class="btn">
+            <button id="btnLeft"><i class="fas fa-arrow-alt-circle-left fa-2x"></i></button>
+            <div class="text">
+                <h1>HELLO WORLD</h1>
+                <small>GOOD TO HAVE YOU AROUND</small>
+            </div>
+            <button id="btnRight"><i class="fas fa-arrow-alt-circle-right fa-2x"></i></button>
+        </div>
+    </div>
+    <form >
+        <button id="btn">Click this</button>
+    </form>
+
+    <div class="sidebar">
+        <div class="toggle">
+            <i class="fa fa-bars fa-2x"></i>
+        </div>
+        <div class="sidebar-content">
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">HOME</a></li>
+
+            </ul>
+        </div>
+
+        <div class="scroll">
+            <p>This text appears on scroll</p>
+        </div>
+    </div>
+
+
+    <div class="test-list">
+        <div class="list-display">
+            <table>
+                <tr>
+                    <th>List Name</th>
+                    <th>List Price</th>
+                    <th>Action</th>
+                </tr>
+                <tr id="tr">
+                    <td id="listname"></td>
+                    <td id="listprice"></td>
+                    <td id="listaction"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="list-input">
+            <form>
+                <div class="form-input">
+                    <input type="text" id="list-name"><br>
+                    <label for="list-name">List name</label><br>
+                </div>
+                <div class="form-input">
+                    <input type="number" id="list-amount"><br>
+                    <label for="list-amount">List Amount</label><br>
+                </div>
+                
+                <input type="submit" value="SUBMIT" id="submit">
+            </form>
+        </div>
+    </div>
+  
+<!--
+    <script>
+        "use strict"
+        let toggle = document.querySelector(".toggle");
+        let sidebarContent = document.querySelector(".sidebar-content");
+
+        let toggleCheck = false;
+
+        toggle.addEventListener("click", function(){
+            toggleCheck = !toggleCheck;
+            console.log(sidebarContent.style.transform )
+
+            if(toggleCheck){
+                sidebarContent.style.transform = "translateX(0)";
+                sidebarContent.style.transition = "all 400ms ease-in";
+                
+                toggle.classList.add("rotate");
+                toggle.innerHTML = "<i class='fa fa-times fa-2x'></i>";
+                toggle.style.transition = "all 400ms ease-in";
+            }else{
+                sidebarContent.style.transform = "translateX(400px)";
+                sidebarContent.style.transition = "all 400ms ease-in";
+                toggle.innerHTML = "<i class='fa fa-bars fa-2x'></i>";
+                toggle.style.transition = "all 400ms ease-in";
+                toggle.classList.remove("rotate");
+            }
+        })
+
+
+        let btn = document.getElementById("btn");
+        let body = document.querySelector("body");
+
+        let count = true;
+
+        btn.addEventListener("click", function(e){
+            e.preventDefault();
+            // let ans = prompt("What is Your name?");
+
+            count = !count;
+
+                if(count){
+                body.style.backgroundColor = "#fff";
+                
+            }else{
+                body.style.backgroundColor = "#525252";
+            }
+
+        })
+
+ 
+//  SLIDER SCRIPT
+
+let sliderContainer = document.querySelector(".slider-container")
+let sliderImage = document.querySelector(".slider-img");
+let theimg = document.querySelectorAll(".slider-img img");
+
+let leftBtn = document.getElementById("btnLeft");
+let rightBtn = document.getElementById("btnRight");
+
+let counter = 1;
+let size = theimg[0].clientWidth;
+
+// sliderImage.style.transform = "translateX("+(-);
+
+// sliderImage.style.transform = "translateX("+(-sliderImage.clientWidth * counter)+"px)";
+sliderImage.style.transition = "all 500ms ease-in";
+
+rightBtn.addEventListener("click", ()=>{
+    counter++
+
+    if(counter >= theimg.length){
+        counter = 1
+    }
+    sliderImage.style.transform = "translateX("+(-sliderImage.clientWidth * counter)+"px)";
+})
+
+leftBtn.addEventListener("click", ()=>{
+    counter--
+
+    if(counter < 1){
+        counter = theimg.length -1;
+
+    }
+    sliderImage.style.transform = "translateX("+(-sliderImage.clientWidth * counter)+"px)";
+})
+
+setInterval(function(){
+    counter++
+
+    if(counter >= theimg.length){
+        counter = 1
+    }
+    sliderImage.style.transform = "translateX("+(-sliderImage.clientWidth * counter)+"px)";
+}, 3000);
+
+/*
+function outer(){
+    var a = 1;
+
+    function inner(){
+
+        console.log(a);
+        // var a = 3;
+
+        console.log(`Inner a: ${a }`);
+    }
+    inner();
+
+    console.log(`Outer a: ${a}`)
+
+}
+
+outer();
+
+for (var i = 0; i<3; i++){
+    setTimeout(()=>{
+        console.log("var "+i)
+    }, 1)
+}
+
+for(let i = 0; i<3; i++){
+    setTimeout(()=> console.log("let"+i), 1000);
+}
+
+for(i = 0; i<=4; i++){
+    setTimeout(()=> console.log("without: "+i), 1000)
+}
+
+setTimeout(() => {
+    for(i=0; i<3; i++){
+        console.log(i)
+    }
+}, 1000);*/
+
+// console.log(null == Object)
+// console.log(sliderImage.clientWidth +"px");
+// console.log(theimg[0].clientWidth);
+// console.log(size);
+
+
+
+// rightBtn.addEventListener("click", function(){
+//     sliderImage.style.transition = "all ease-in 300ms";
+//     sliderImage.style.transform = "translateX(-1080px)";
+
+//     console.log(size)
+// })
+
+// leftBtn.addEventListener("click", function(){
+//     sliderImage.style.transition = "all ease-in 300ms";
+//     sliderImage.style.transform = "translateX(1080px)";
+    
+// })
+
+
+
+
+        /*
+        let a = 10;
+        b = a + 2;
+
+        console.log("a: "+ a, "b: "+ b);
+
+        a = 12;
+        console.log("a: "+ a, "b: "+ b);
+
+
+        let data = {
+            name : "Tunde",
+            age : 23,
+            height: 164,
+            weight: 74
+        }
+
+        let newData = data
+
+        let dataDisplay = document.querySelector(".oldData");
+        let newDataDisplay = document.querySelector(".newData");
+        
+        dataDisplay.innerHTML = JSON.stringify(data);
+
+        data.age = 36;
+
+        newDataDisplay.innerHTML = JSON.stringify(newData);
+
+        console.log("data: "+ data, "newData: "+ newData);
+*/
+
+// YDKJS CLASSWORK 1
+/*
+const TAX_RATE = 0.07;
+const PHONE_PRICE = 99.99;
+const ACCESSORY_PRICE = 20;
+const SPENDING_THRESHOLD = 200;
+
+var amount = 0;
+
+var bankBalance = prompt("How much are you willing to spend");
+var bankBalanceNumber = Number(bankBalance);
+
+// var purchasePrice = PHONE_PRICE + (PHONE_PRICE * TAX_RATE) + ACCESSORY_PRICE;
+// console.log(purchasePrice)
+// console.log(Math.round(purchasePrice));
+
+function calculateTax(amount){
+    return amount * TAX_RATE;
+}
+
+while(amount < bankBalanceNumber){
+    amount = amount + PHONE_PRICE;
+
+    if(amount < SPENDING_THRESHOLD){
+        amount = amount + ACCESSORY_PRICE;
+    }
+}
+
+amount = amount + calculateTax(amount);
+console.log("Your purchase: $"+amount.toFixed(2));
+
+if(amount > bankBalanceNumber){
+    console.log("You can't affor this purchase.")
+}
+*/
+
+// while(purchasePrice < bankBalance){
+//     if(purchasePrice < SPENDING_THRESHOLD){
+//         console.log("we'll take that");
+//     }else{
+//         console.log("Thank you")
+//     }
+// }
+
+function totalPrice(amount){
+    return amount + (amount * TAX_RATE);
+}
+
+let q = 3;
+
+foo();
+
+function foo(){
+
+q = 1;
+
+console.log(q)
+
+}
+
+
+k = 1;
+
+console.log(k);
+
+var k;
+
+
+// n = 1;
+
+/*
+function nthChild(a, n){
+    return a + (2 * n);
+}
+
+b = 1;
+setInterval(function(){
+    b++;
+    console.log(nthChild(0, b));
+}, 1000)
+
+*/
+
+window.addEventListener("scroll", function(){
+    // console.log("Scroll x:"+Math.floor(scrollX));
+    // console.log("Scroll Y:"+Math.floor(scrollY));
+
+    let count = Math.floor(scrollY);
+    let scrollDiv = document.querySelector(".scroll");
+    scrollDiv.style.transform = "translateX("+count+"px)";
+
+
+})
+
+// CLOSURE
+
+function makeAdder(x){
+
+    function add(y){
+        return y + x
+    }
+
+    return add
+}
+
+
+let chi = makeAdder(5);
+
+console.log(chi(1))
+
+console.log(typeof(NaN * 2))
+
+    </script>
+    -->
+
+    <script>
+
+        
+
+        let listName = document.getElementById("list-name");
+        let listAmount = document.getElementById("list-amount");
+        let table = document.querySelector("table");
+        let tableItemName = table.querySelector("#listname");
+        let tableItemPrice = table.querySelector("#listprice");
+        let tableRow = document.querySelectorAll("tr td");
+
+        let btn = document.getElementById('submit');
+
+        let id = 1;
+        let listArray = [];
+
+        btn.addEventListener("click", function(e){
+            e.preventDefault();
+            if(listName.value === "" || listAmount.value === ""){
+
+                listName.style.borderBottom = "solid 1px red";
+
+                return false;
+            }else{
+                listArray.push({
+                    "Id": id++,
+                    "List Name": listName.value,
+                    "List Amount": listAmount.value
+                });
+
+                listAmount.value = "";
+                listName.value = "";
+
+            }
+
+            for(i = 0; i<listArray.length; i++){
+                    // console.log(listArray[i]["List Name"]+" "+listArray[i]["List Amount"]);
+                // tableItemName.innerHTML+= listArray[i]["List Name"];
+                // tableItemPrice.innerHTML+=listArray[i]["List Amount"];
+                tableRow[i].innerHTML = listArray[i]["List Name"]
+                }
+        })
+
+       let foo = function(a){
+           console.log(a)
+       }
+
+       foo(12);
+
+       function boo(a){
+        b = a;
+        return a+b;
+       }
+
+       console.log(boo(4))
+      
+        // listArray.forEach()
+
+        for(let i = 0; i<= 10; i++){
+            console.log("Let: "+ i);
+        }
+
+        // console.log("Let: "+i)
+
+ /*
+        for (let i=1; i<=5; i++) {
+        setTimeout( function timer(){
+        console.log( i );
+        }, i*1000 );
+        }
+        */
+
+       function myself(){
+           return this
+       }
+
+        let objective = {
+            firstName : "Tunde",
+            lastName: "Ade",
+            height : 164,
+            fullName: myself
+        }
+
+        console.log(objective.fullName())
+
+        function brand(){
+            console.log(this)
+        }
+
+        var abjctive = {
+            a:2,
+            b:3,
+            c:4
+        }
+
+        brand.call(abjctive);
+
+        console.log(typeof String);
+
+        // let countries = ["Niger", "Austrialia", "Somalia", "Paraguay", "India", "Iran"];
+        // countries.forEach(function(){
+
+        // })
+            
+        const shape ={
+            radius: 10,
+            diameter(){
+                return this.radius * 2
+            },
+            perimeter(){
+                return 2 * Math.PI * this.radius
+            }
+        };
+
+        shape.radius = 5;
+
+        console.log(shape.diameter());
+        console.log(shape.perimeter());
+
+        function gaz(){
+            let self = this
+            setTimeout(function(){
+                console.log(self.a)
+            })
+        }
+
+        //FAT ARROW FUNCTIONS DO NOT HAVE THEIR OWN "THIS"
+
+        let obGaz  = {
+            a:2
+        }
+
+        gaz.call(obGaz);
+
+        let food = ["rice", "beans", "amala"];
+
+        console.log(typeof(food))
+    </script>
+
+</body>
+</html>
