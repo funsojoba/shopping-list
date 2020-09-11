@@ -1,12 +1,17 @@
-class dataInput {
-    constructor(name, amount){
-        this.name = name;
+// WORKING WITH CLASSES
+
+class Data{
+    constructor(element){
+        this.element = element;
     }
-    getDataInput(){
-        return document.getElementById(this.name);
+
+    getData(){
+        return document.getElementById(this.element);
     }
+
+
 }
 
-let amountInput = new dataInput("list-name");
 
-console.log(amountInput.getDataInput());
+let amount = new Data("list-amount");
+console.log(amount.getData());
