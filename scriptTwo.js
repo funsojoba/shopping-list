@@ -61,6 +61,8 @@ function insertList(data){
 
 let toggle = true;
 
+// COMPLETE TASK
+
 function completedTask(e){
 
     e.parentElement.parentElement.classList.toggle("completed")
@@ -78,8 +80,9 @@ function editTask(e){
     btnEdit.style.display = "inline-block";
     btn.style.display = "none";
 
-
 }
+
+// LIST EDIT BUTTON
 
 btnEdit.addEventListener("click", function(e){
     e.preventDefault();
